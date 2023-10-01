@@ -1,0 +1,101 @@
+# Project Idea: Online Diary API
+
+## Project Description:
+The Online Diary API is a web service designed to allow users to create, manage, and share personal diaries online. Users can register, log in, and perform various actions related to diary management, including creating diary entries, associating tags with entries, adding comments, and expressing likes on entries. The API enables efficient organization, retrieval, and interaction with diary content.
+
+## Responsibilities:
+1. **User Management:**
+   - Allow users to register with email and password.
+   - Enable user authentication and login using email and password.
+   - Facilitate user profile updates.
+
+2. **Diary Management:**
+   - Support the creation of diaries, including specifying titles and privacy settings.
+   - Allow users to update diary settings (e.g., privacy preferences).
+   - Provide functionality to delete diaries.
+
+3. **Entry Management:**
+   - Enable users to create diary entries with content and date.
+   - Support the retrieval of diary entries and their associated tags, comments, and likes.
+   - Implement operations to update and delete diary entries.
+
+4. **Tagging System:**
+   - Allow users to create tags for categorizing diary entries.
+   - Implement a many-to-many relationship between tags and diary entries for efficient categorization.
+   - Enable users to associate multiple tags with individual diary entries.
+
+5. **Comments and Likes:**
+   - Allow users to add comments to diary entries.
+   - Implement the ability to like diary entries.
+   - Facilitate the retrieval of comments and likes associated with diary entries.
+
+6. **Search Functionality:**
+   - Provide a search feature allowing users to search for diary entries by keywords or dates.
+   - Enable users to filter search results based on privacy settings.
+
+7. **Security and Authentication:**
+   - Implement secure password storage using hashing.
+   - Ensure that only authorized users can access and modify their diaries and entries.
+
+## Attributes:
+- **Users:**
+  - user_id (Primary Key)
+  - email
+  - password
+  - ...
+
+- **Diaries:**
+  - diary_id (Primary Key)
+  - user_id (Foreign Key)
+  - title
+  - privacy
+  - ...
+
+- **Entries:**
+  - entry_id (Primary Key)
+  - diary_id (Foreign Key)
+  - date_created
+  - content
+  - ...
+
+- **Tags:**
+  - tag_id (Primary Key)
+  - name
+  - ...
+
+- **Comments:**
+  - comment_id (Primary Key)
+  - user_id (Foreign Key)
+  - entry_id (Foreign Key)
+  - content
+  - date_created
+  - ...
+
+- **Likes:**
+  - like_id (Primary Key)
+  - user_id (Foreign Key)
+  - entry_id (Foreign Key)
+  - date_created
+  - ...
+
+- **EntryTags:**
+  - id (Primary Key)
+  - entry_id (Foreign Key)
+  - tag_id (Foreign Key)
+
+## Relationships:
+- Users have a one-to-many relationship with Diaries.
+- Users have a one-to-many relationship with Likes.
+- Users have a one-to-many relationship with Comments.
+- Diaries have a one-to-many relationship with Entries.
+- Diaries have a many-to-one relationship with Users.
+- Entries have a many-to-one relationship with Diaries.
+- Entries have a one-to-many relationship with Comments.
+- Comments have a many-to-one relationship with Entries.
+- Comments have a many-to-one relationship with Users.
+- Entries have a one-to-many relationship with Likes.
+- Likes have a many-to-one relationship with Entries.
+- Likes have a many-to-one relationship with Users.
+- Tags have a many-to-many relationship with Entries via the EntryTags junction table.
+
+This Online Diary API aims to provide users with a powerful and flexible platform for managing and sharing their personal diaries, offering robust user management, privacy controls, and efficient organization of diary content through tagging and relationships.
